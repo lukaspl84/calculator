@@ -1,196 +1,226 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kalkulator
-{/// <summary>
-/// 
-/// </summary>
+{
+    /// <summary>
+    /// The main Calculator class.
+    /// Contains all methods for performing basic math functions.
+    /// </summary>
+    /// <remarks>
+    /// This class can add, subtract, multiply and divide.
+    /// </remarks>
     public partial class Kalkulator : Form
     {
-        private byte variable = 0;
+        private byte _variable = 0;
+        private float _operand = 0;
+        private bool _dot = false, _clearDisplay = true;
 
-        private float memory = 0, operand = 0;
+        /// <summary>
+        /// Public constructor of the Calculator class.
+        /// It initiates all of the needed components on the view.
+        /// </summary>
+        public Kalkulator() => InitializeComponent();
 
-        private bool dot = false, clearDisplay = true; 
-
-        /// konfiguracja znaku kropki (.)
-        private void dotCheck()
+        /// <summary>
+        /// Private functions which prepares and performs the requested operation type.
+        /// </summary>
+        /// <param name="operationType">The type of the requested operation to perform.</param>
+        /// <remarks>
+        /// Parameter `operType` can be 1 (adding), 2 (subtracting), 3 (multiplying) or 4 (dividing).
+        /// </remarks>
+        private void Calculate(byte operationType)
         {
-            if (this.textBoxResult.Text.IndexOf(".") > 0)
+            var operandB = float.Parse(textBoxResult.Text);
+            if (_variable == 0)
             {
-                this.dot = true;
+                _operand = operandB;
+                _clearDisplay = true;
+                _dot = false;
+                _variable = operationType;
             }
             else
             {
-                this.dot = false;
-            }
-        }
-        public Kalkulator()
-        {
-            InitializeComponent();
-        }
-
-        /// konfiguracja do obliczeń
-        private void calculate(byte operationType)
-        {
-            float operandB = float.Parse(this.textBoxResult.Text);
-            if (this.variable == 0)
-            {
-                this.operand = operandB;
-                this.clearDisplay = true;
-                this.dot = false;
-                this.variable = operationType;
-            }
-            else
-            {
-                if (this.variable == operationType)
+                if (_variable == operationType)
                 {
-                    this.operand = this.operationCalculation(this.operand, operandB, this.variable);
-                    this.textBoxResult.Text = Convert.ToString(this.operand);
-                    this.clearDisplay = true;
-                    this.dot = false;
+                    _operand = OperationCalculation(_operand, operandB, _variable);
+                    textBoxResult.Text = Convert.ToString(_operand);
+                    _clearDisplay = true;
+                    _dot = false;
                 }
                 else
                 {
-                    if (this.clearDisplay)
+                    if (_clearDisplay)
                     {
-                        this.variable = operationType;
+                        _variable = operationType;
                     }
                     else
                     {
-                        this.operand = this.operationCalculation(this.operand, operandB, this.variable);
-                        this.textBoxResult.Text = Convert.ToString(this.operand);
-                        this.clearDisplay = true;
-                        this.dot = false;
-                        this.variable = operationType;
+                        _operand = OperationCalculation(_operand, operandB, _variable);
+                        textBoxResult.Text = Convert.ToString(_operand);
+                        _clearDisplay = true;
+                        _dot = false;
+                        _variable = operationType;
                     }
                 }
             }
         }
 
-        /// konfiguracja operacji obliczania
-        private float operationCalculation(float operA, float operB, byte operType)
+        /// <summary>
+        /// Functions which performs the requested operation type on two float parameters.
+        /// </summary>
+        /// <param name="operA">The first float parameter.</param>
+        /// <param name="operB">The second float parameter.</param>
+        /// <param name="operType">The type of the requested operation to perform.</param>
+        /// <returns>The operation result based on the passed parameters and the operation type to perform.</returns>
+        /// <remarks>
+        /// Parameter `operType` can be 1 (adding), 2 (subtracting), 3 (multiplying) or 4 (dividing).
+        /// </remarks>
+        public float OperationCalculation(float operA, float operB, byte operType)
         {
             float result = 0;
             switch (operType)
             {
-                
-                /// operacja dodawania
                 case 1:
                     result = operA + operB;
-                break;
-                
-                /// operacja odejmowania
+                    break;
+
                 case 2:
                     result = operA - operB;
-                break;
-                
-                /// operacja mnożenia
+                    break;
+
                 case 3:
                     result = operA * operB;
-                break;
-                
-                /// operacja dzielenia
-                case 4:                                      
-                   result = operA / operB;                    
-                break;
+                    break;
+
+                case 4:
+                    result = operA / operB;
+                    break;
             }
             return result;
         }
 
-        /// konfiguracja przycisku kropki (.)
+        /// <summary>
+        /// Event click handler on the dot (.) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonDot_Click(object sender, EventArgs e)
         {
-            if (!this.dot)
+            if (!_dot)
             {
-                if (this.clearDisplay)
+                if (_clearDisplay)
                 {
-                    this.textBoxResult.Text = "0,";
-                    this.clearDisplay = false;
+                    textBoxResult.Text = "0,";
+                    _clearDisplay = false;
                 }
                 else
                 {
-                    this.textBoxResult.Text += ",";
+                    textBoxResult.Text += ",";
                 }
-                this.dot = true;
+                _dot = true;
             }
         }
 
-        /// konfiguracja przycisku CE
+        /// <summary>
+        /// Event click handler on the CE button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonCE_Click(object sender, EventArgs e)
         {
             textBoxResult.Text = "0";
-            variable = 0;
+            _variable = 0;
         }
 
-        /// konfiguracja przycisku C
+        /// <summary>
+        /// Event click handler on the C button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonC_Click(object sender, EventArgs e)
         {
-            this.clearDisplay = true;
-            this.dot = false;
-            this.operand = 0;
-            this.memory = 0;
-            this.variable = 0;
-            this.textBoxResult.Text = "0";
+            _clearDisplay = true;
+            _dot = false;
+            _operand = 0;
+            _variable = 0;
+            textBoxResult.Text = "0";
         }
 
-        /// konfiguracja przycisku dodawania (+)
+        /// <summary>
+        /// Event click handler on the dot add (+) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            this.calculate(1);
+            Calculate(1);
         }
 
-        /// konfiguracja przycisku odejmowania (-)
+        /// <summary>
+        /// Event click handler on the substract (-) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonSub_Click(object sender, EventArgs e)
         {
-            this.calculate(2);
+            Calculate(2);
         }
-        
-        /// konfiguracja przycisku mnożenia (*)
+
+        /// <summary>
+        /// Event click handler on the multiply (*) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonMul_Click(object sender, EventArgs e)
         {
-            this.calculate(3);
+            Calculate(3);
         }
 
-        /// konfiguracja przycisku dzielenia (/)
+        /// <summary>
+        /// Event click handler on the divide (/) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonDiv_Click(object sender, EventArgs e)
         {
-            this.calculate(4);
+            Calculate(4);
         }
 
-        /// konfikuracja przycisku równa się (=)
+        /// <summary>
+        /// Event click handler on the equals (=) button.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttonResult_Click(object sender, EventArgs e)
         {
-            if (this.variable > 0)
+            if (_variable > 0)
             {
-                float operandB = float.Parse(this.textBoxResult.Text);
-                this.operand = this.operationCalculation(this.operand, operandB, this.variable);
-                this.textBoxResult.Text = Convert.ToString(this.operand);
-                this.clearDisplay = true;
-                this.dot = false;
-                this.variable = 0;
+                var operandB = float.Parse(textBoxResult.Text);
+                _operand = OperationCalculation(_operand, operandB, _variable);
+                textBoxResult.Text = Convert.ToString(_operand);
+                _clearDisplay = true;
+                _dot = false;
+                _variable = 0;
             }
         }
 
-        /// konfiguracja przycisków numerycznych od 0 do 9
+        /// <summary>
+        /// Event click handler on the all digits (0-9) buttons.
+        /// </summary>
+        /// <param name="sender">The object sender button</param>
+        /// <param name="e">Event data that provides values to use for event click button.</param>
         private void buttNum_Click(object sender, EventArgs e)
         {
             var buttonTxt = ((Button)sender).Text;
-            if ((this.textBoxResult.Text == "0") || (this.clearDisplay))
+            if (textBoxResult.Text == "0" || _clearDisplay)
             {
-            this.textBoxResult.Text = buttonTxt;
-            this.clearDisplay = false;
+                textBoxResult.Text = buttonTxt;
+                _clearDisplay = false;
             }
             else
             {
-                this.textBoxResult.Text += buttonTxt;
+                textBoxResult.Text += buttonTxt;
             }
         }
     }

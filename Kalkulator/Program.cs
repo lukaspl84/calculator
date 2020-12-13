@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kalkulator
@@ -9,7 +6,7 @@ namespace Kalkulator
     static class Program
     {
         /// <summary>
-        /// Główny punkt wejścia dla aplikacji.
+        /// The main entry point to the application.
         /// </summary>
         [STAThread]
         static void Main()

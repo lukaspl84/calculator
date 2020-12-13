@@ -16,3 +16,25 @@ F:\szkoła\4 semestr\C#\Kalkulator\Kalkulator\obj\Debug\Kalkulator.Properties.Re
 F:\szkoła\4 semestr\C#\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.GenerateResource.cache
 F:\szkoła\4 semestr\C#\Kalkulator\Kalkulator\obj\Debug\Kalkulator.exe
 F:\szkoła\4 semestr\C#\Kalkulator\Kalkulator\obj\Debug\Kalkulator.pdb
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Kalkulator.exe.config
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Kalkulator.exe
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Kalkulator.pdb
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\FluentAssertions.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\FluentAssertions.pdb
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\FluentAssertions.xml
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.csprojAssemblyReference.cache
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.Kalkulator.resources
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.Properties.Resources.resources
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.csproj.GenerateResource.cache
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.csproj.CoreCompileInputs.cache
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.csproj.CopyComplete
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.exe
+C:\Users\Paweł\Documents\aaaaa\Kalkulator\obj\Debug\Kalkulator.pdb
